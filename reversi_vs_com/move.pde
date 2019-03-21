@@ -71,3 +71,39 @@ void recorder(boolean inout) {
     pass=0;
   }
 }
+
+//パスの判定
+void passCheck(){
+  //打てる所が無ければ自動でパス
+  if (num0==0 && pass<=1){
+    if (turn == 1){println(">> mv--,MAN   , pass;  ");}
+    if (turn == -1){println(">> mv--,COM   , pass;  ");}
+    pass++; //パスの回数を数える
+    turn = -turn; //手番交代
+    bw = -bw; //石の色を反転
+    showBoard(); //盤面、両者の石、次の手番が置ける所を描画
+    
+    fill(255,0,0);
+    textSize(1.5*side); //文字の大きさ
+    textAlign(CENTER);
+    //stext("PASS", width/2,height/2);
+  }
+  
+  //2回パスしたら勝敗を判定
+  if (pass==2){
+    fill(255,0,0);
+    textSize(1.5*side); //文字の大きさ
+    textAlign(CENTER);
+    if (numW<numB){ //黒が多い時、「人が黒」か「AIが白」なら勝ち
+      if (turn==bw){text("YOU WIN", width/2,height/2);}
+      else {text("YOU LOSE", width/2,height/2);}
+    }
+    else if (numB<numW){ //白が多い時、「人が白」か「AIが黒」なら勝ち
+      if (turn!=bw){text("YOU WIN", width/2,height/2);}
+      else {text("YOU LOSE", width/2,height/2);}
+    }
+    else {text("DRAW", width/2,height/2);}
+    
+    pass=3; //
+  }
+}
