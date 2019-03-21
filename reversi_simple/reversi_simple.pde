@@ -1,4 +1,3 @@
-//2人用リバーシ
 int[][] board = new int[10][10];  //盤面の記録用
 int bw;  //石の色。先手(黒石)は1、後手(白石)は-1
 int pass,side;  //パスの回数、1マスの長さ
@@ -29,6 +28,12 @@ void mousePressed(){
   }
 }
 
+void keyPressed() {
+  if (key=='r') {
+    startPosition();
+    showBoard();
+  }
+}
 
 //初期設定
 void startPosition() {
