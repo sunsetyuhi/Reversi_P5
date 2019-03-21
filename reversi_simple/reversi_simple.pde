@@ -3,7 +3,6 @@ int bw;  //石の色。先手(黒石)は1、後手(白石)は-1
 int pass,side;  //パスの回数、1マスの長さ
 int num0,numB,numW;  //石を打てる所の数、黒石の数、白石の数
 
-
 void setup(){
   size(400, 400); //8*side +2*side, h=8*side
   side=height/8;
