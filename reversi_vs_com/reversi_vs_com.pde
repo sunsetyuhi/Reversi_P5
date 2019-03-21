@@ -1,10 +1,10 @@
-boolean start; //初期画面
-int board[][] = new int[10][10]; //盤面の一時記録用
-int board_rec[][][] = new int[100][10][10]; //盤面の最終記録用
-int bw, turn; //石の色、手番
-int bw_rec[] = new int[100];
-int move, pass, side; //手数。パスの回数。1マスの長さ
-int num0,numB,numW; //石を打てる所の数、黒石の数、白石の数
+boolean start;  //初期画面
+int board[][] = new int[10][10];  //盤面の一時記録用
+int board_rec[][][] = new int[100][10][10];  //盤面の最終記録用
+int bw, turn;  //石の色、手番
+int bw_rec[] = new int[100];  //石の色の記録用
+int move, pass, side;  //手数。パスの回数。1マスの長さ
+int num0,numB,numW;  //石を打てる所の数、黒石の数、白石の数
 
 void setup(){
   size(500, 400); //8*side +2*side, h=8*side
@@ -38,40 +38,8 @@ void setup(){
 }
 
 void draw(){
-  com(); //コンピュータの手
-  
-  //打てる所が無ければ自動でパス
-  if (num0==0 && pass<=1){
-    if (turn == 1){println(">> mv--,MAN   , pass;  ");}
-    if (turn == -1){println(">> mv--,COM   , pass;  ");}
-    pass++; //パスの回数を数える
-    turn = -turn; //手番交代
-    bw = -bw; //石の色を反転
-    showBoard(); //盤面、両者の石、次の手番が置ける所を描画
-    
-    fill(255,0,0);
-    textSize(1.5*side); //文字の大きさ
-    textAlign(CENTER);
-    //stext("PASS", width/2,height/2);
-  }
-  
-  //2回パスしたら勝敗を判定
-  if (pass==2){
-    fill(255,0,0);
-    textSize(1.5*side); //文字の大きさ
-    textAlign(CENTER);
-    if (numW<numB){ //黒が多い時、「人が黒」か「AIが白」なら勝ち
-      if (turn==bw){text("YOU WIN", width/2,height/2);}
-      else {text("YOU LOSE", width/2,height/2);}
-    }
-    else if (numB<numW){ //白が多い時、「人が白」か「AIが黒」なら勝ち
-      if (turn!=bw){text("YOU WIN", width/2,height/2);}
-      else {text("YOU LOSE", width/2,height/2);}
-    }
-    else {text("DRAW", width/2,height/2);}
-    
-    pass=3; //
-  }
+  com();  //コンピュータの手
+  passCheck();  //パスの判定
 }
 
 void mousePressed(){
