@@ -55,7 +55,7 @@ void movePiece(int i, int j){
   }
 }
 
-#盤面の記録と呼び出し
+//盤面の記録と呼び出し
 void recorder(boolean inout) {
   if(inout==true){
     for (int k=1;k<=8;k++){ //石の配置を記録
