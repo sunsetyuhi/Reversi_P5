@@ -56,8 +56,8 @@ void com(){
     }
     
     if (place==1) { //打てれば実行
-			println("");
-			
+      println("");
+
       //各マスの評価値を表示
       /*for (int i=1;i<=8;i++){
         for (int j=1;j<=8;j++){
