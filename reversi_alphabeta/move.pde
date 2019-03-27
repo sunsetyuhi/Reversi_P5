@@ -86,7 +86,7 @@ void passCheck(){
     fill(255,0,0);
     textSize(1.5*side); //文字の大きさ
     textAlign(CENTER);
-    text("PASS", width/2,height/2);
+    //text("PASS", width/2,height/2);
   }
   
   //2回パスしたら勝敗を判定
